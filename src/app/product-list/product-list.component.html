@@ -11,5 +11,7 @@
     <td>{{product.name}}</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
+    <td><a [routerLink]="['/product/update', product.id]" >edit</a></td>
+    <td><a [routerLink]="['/product/delete', product.id]" >xoa</a></td>
   </tr>
 </table>

@@ -6,20 +6,23 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductCreateComponent } from './product-create/product-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductUpdateComponent } from './product-update/product-update.component';
+import { ProductDeleteComponent } from './product-delete/product-delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductCreateComponent
+    ProductCreateComponent,
+    ProductUpdateComponent,
+    ProductDeleteComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-  ],
+     AppRoutingModule,
+      FormsModule, 
+      ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
