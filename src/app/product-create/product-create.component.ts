@@ -1,32 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductService } from '../service/product.service';
 
 @Component({
   selector: 'app-product-create',
   templateUrl: './product-create.component.html',
-  styleUrls: ['./product-create.component.css']
+  styleUrls: ['./product-create.component.css'],
 })
 export class ProductCreateComponent implements OnInit {
-
   productForm: FormGroup = new FormGroup({
-    id : new FormControl(),
-    name : new FormControl(),
-    price : new FormControl(),
-    description : new FormControl(),
-
+    id: new FormControl(),
+    name: new FormControl(),
+    price: new FormControl(),
+    description: new FormControl(),
   });
 
-  constructor( private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  submit(){
+  submit() {
     const product = this.productForm.value;
     this.productService.saveProduct(product);
-    this.productForm.reset();
+    this.router.navigate(['/product/list']);
   }
-
-
 }

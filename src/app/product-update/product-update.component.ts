@@ -31,10 +31,11 @@ export class ProductUpdateComponent implements OnInit {
     console.log(id);
 
     this.product = this.productService.findById(id);
-    console.log(this.product);
+    // console.log(this.product);
   }
 
   submit() {
+
     this.productService.update(this.product , this.product.id);
     this.router.navigate(['product/list']);
   }

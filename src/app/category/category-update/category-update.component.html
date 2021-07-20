@@ -1,0 +1,17 @@
+<h1>Xoá danh mục sản phẩm</h1>
+<form *ngIf="categoryUpdateForm" [formGroup]="categoryUpdateForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td>Mã danh mục:</td>
+      <td><input type="number" formControlName="id" [value]="category.id"></td>
+    </tr>
+    <tr>
+      <td>Tên danh mục:</td>
+      <td><input type="text" formControlName="name" [value]="category.name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button type="submit">sua</button></td>
+    </tr>
+  </table>
+</form>

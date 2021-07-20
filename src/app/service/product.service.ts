@@ -54,19 +54,19 @@ export class ProductService {
   }
 
   update(data: any, id: any) {
-    this.products.forEach((product) => {
+    this.products.forEach((product) => {{
       if (product.id == data.id) {
         product = data;
       }
-    });
+    }});
   }
 
   delete(id: any) {
-    this.products.forEach((product , index) => {
+    this.products.forEach((product , index) => {{
       if (product.id == id) {
         this.products.splice(index, 1);
       }
-    });
+    }});
 
     this.router.navigate(['/product/list']);
   }
