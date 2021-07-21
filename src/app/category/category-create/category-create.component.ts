@@ -26,7 +26,14 @@ export class CategoryCreateComponent implements OnInit {
 
   submit(){
     const product = this.categoryForm?.value;
-    this.categoryService.save(product)
-    this.router.navigate(['/category/list']);
+    this.categoryService.save(product).subscribe(() => {
+      this.router.navigate(['/category/list']);
+      alert( 'them thanh cong');
+    }, error => {
+      console.log(error);
+      
+    }
+    )
+   
   }
 }

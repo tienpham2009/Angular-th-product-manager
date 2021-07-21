@@ -21,20 +21,37 @@ export class CategoryUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.category = this.categoryService.findById(id);
-
     this.categoryUpdateForm = this.fb.group({
-      id: [this.category?.id],
-      name: [this.category?.name],
+      id: [''],
+      name: [''],
+    });
+    this.getCategory(id);
+  }
+
+  getCategory(id: any) {
+    this.categoryService.findById(id).subscribe((res: any) => {
+      if (res.status == 'success') {
+        let data = res.data;
+        this.categoryUpdateForm?.patchValue({
+          id: data.id,
+          name: data.name,
+        })
+      }
     });
   }
 
   submit() {
     this.category = this.categoryUpdateForm?.value;
-    const id = this.category.id;
-    this.categoryService.update(this.category, id);
-    this.router.navigate(['/category/list']);
-  }
+    const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-  
+    this.categoryService.update(this.category, id).subscribe(
+      () => {
+        this.router.navigate(['/category/list']);
+      }
+      // ,
+      // (error) => {
+      //   console.log(error);
+      // }
+    );
+  }
 }

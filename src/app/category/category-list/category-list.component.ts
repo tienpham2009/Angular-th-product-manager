@@ -21,11 +21,29 @@ export class CategoryListComponent implements OnInit {
   }
 
   getAll() {
-    this.categories = this.categoryService.getAll();
+    this.categoryService.getAll().subscribe((categoriesData: any) => {
+      console.log(categoriesData);
+
+      this.categories = categoriesData.data;
+    });
   }
 
   delete(id: any): void {
-    this.categoryService.delete(id);
-    this.router.navigate(['/category/list']);
+    console.log(id);
+
+    if (confirm('Ban chac chan muon xoa')) {
+      this.categoryService.delete(id).subscribe(
+        (res: any) => {
+          if (res.status == 'success') {
+            alert(res.message);
+            this.getAll();
+          }
+          
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 }
